@@ -7,7 +7,6 @@ export const Form: React.FC = () => {
   const [inputUnit, setInputUnit] = useState<string>("")
   const [outputUnit, setOutputUnit] = useState<string>("")
   const [convertedTempValue, setConvertedTempValue] = useState<string>("");
-  const [enableButton, setEnableButton] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
