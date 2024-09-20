@@ -14,6 +14,7 @@ export const TempInput: React.FC< TempInputProps> = ({ tempValue, setTempValue }
 
   return (
     <input
+      className="bg-transparent border-2 p-2 rounded-xl w-20 mx-3"
       type="number"
       placeholder="0.00"
       value={tempValue}

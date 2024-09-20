@@ -44,7 +44,7 @@ export const useCalculateTemp = () => {
 
     const isButtonEnabled = tempValue !== "" && inputUnit !== "" && outputUnit !== "";
 
-    const buttonClass = isButtonEnabled ? "bg-green-200" : "bg-neutral-600";
+    const buttonClass = isButtonEnabled ? "bg-neutral-1000" : "bg-neutral-400 cursor-not-allowed";
 
     return {
         tempValue,

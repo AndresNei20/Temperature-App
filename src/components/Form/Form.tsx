@@ -16,20 +16,20 @@ export const Form: React.FC = () => {
     buttonClass, } = useCalculateTemp();
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <h2>Temperature Converter</h2>
+    <form className="border-2 p-12 rounded-xl" onSubmit={handleSubmit}>
+      <div className="flex flex-col items-start m-3 py-3">
+        <h1 className="py-3 font-semibold">Temperature Converter</h1>
         <p>Enter the temperature, select unit and submit</p>
       </div>
       <div className="flex flex-row">
         <TempInput tempValue={tempValue} setTempValue={setTempValue} />
-        <UnitSelector handleChange={handleInputUnit} />
-        <UnitSelector handleChange={handleOutputUnit} />
-        <button className={buttonClass}>Submit</button>
+        <UnitSelector handleChange={handleInputUnit} placeholder="From Unit" />
+        <UnitSelector handleChange={handleOutputUnit} placeholder="To Unit" />
+        <button className={buttonClass}>Convert</button>
       </div>
-      <div>
+      <div className="flex flex-row">
         {convertedTempValue && (
-          <p className="text-green-500">{tempValue} {inputUnit} is {convertedTempValue} {outputUnit}</p>
+          <p className="text-green-500 items-start m-3 pt-6">{tempValue} {inputUnit} is {convertedTempValue} {outputUnit}</p>
         )}
       </div>
     </form>
