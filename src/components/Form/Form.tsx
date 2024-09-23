@@ -4,8 +4,8 @@ import { UnitSelector } from "../UnitSelector/UnitSelector";
 import { useCalculateTemp } from "../../hooks/useCalculateTemp";
 
 export const Form: React.FC = () => {
-
-  const {        tempValue,
+  const {
+    tempValue,
     setTempValue,
     inputUnit,
     outputUnit,
@@ -13,7 +13,8 @@ export const Form: React.FC = () => {
     handleSubmit,
     handleInputUnit,
     handleOutputUnit,
-    buttonClass, } = useCalculateTemp();
+    buttonClass,
+  } = useCalculateTemp();
 
   return (
     <form className="border-2 p-12 rounded-xl" onSubmit={handleSubmit}>
@@ -29,7 +30,9 @@ export const Form: React.FC = () => {
       </div>
       <div className="flex flex-row">
         {convertedTempValue && (
-          <p className="text-green-500 items-start m-3 pt-6">{tempValue} {inputUnit} is {convertedTempValue} {outputUnit}</p>
+          <p className="text-green-500 items-start m-3 pt-6">
+            {tempValue} {inputUnit} is {convertedTempValue} {outputUnit}
+          </p>
         )}
       </div>
     </form>
