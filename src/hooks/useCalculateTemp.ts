@@ -2,60 +2,63 @@ import { useState } from "react";
 
 export const useCalculateTemp = () => {
   const [tempValue, setTempValue] = useState<string>("");
-    const [inputUnit, setInputUnit] = useState<string>("");
-    const [outputUnit, setOutputUnit] = useState<string>("");
-    const [convertedTempValue, setConvertedTempValue] = useState<string>("");
-    
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        const value = parseFloat(tempValue);
-        if (isNaN(value)) {
-            console.log("Invalid input value");
-            return;
-        }
-        let result: number;
-        if (inputUnit === "Fahrenheit" && outputUnit === "Celsius") {
-            result = (value - 32) * 5 / 9;
-        } else if (inputUnit === "Fahrenheit" && outputUnit === "Kelvin") {
-            result = (value - 32) * 5 / 9 + 273.15;
-        } else if (inputUnit === "Celsius" && outputUnit === "Fahrenheit") {
-            result = (value * 9 / 5) + 32;
-        } else if (inputUnit === "Celsius" && outputUnit === "Kelvin") {
-            result = (value + 273.15);
-        } else if (inputUnit === "Kelvin" && outputUnit === "Fahrenheit") {
-            result = (value - 273.15) * 9 / 5 + 32;
-        } else if (inputUnit === "Kelvin" && outputUnit === "Celsius") {
-            result = (value - 273.15);
-        } else {
-            result = value;
-        }
-        setConvertedTempValue(result.toFixed(2));
-    };
+  const [inputUnit, setInputUnit] = useState<string>("");
+  const [outputUnit, setOutputUnit] = useState<string>("");
+  const [convertedTempValue, setConvertedTempValue] = useState<string>("");
 
-    const handleInputUnit = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setInputUnit(e.target.value);
-        console.log("Input unit changed to: ", e.target.value);
-    };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const value = parseFloat(tempValue);
+    if (isNaN(value)) {
+      console.log("Invalid input value");
+      return;
+    }
+    let result: number;
+    if (inputUnit === "Fahrenheit" && outputUnit === "Celsius") {
+      result = ((value - 32) * 5) / 9;
+    } else if (inputUnit === "Fahrenheit" && outputUnit === "Kelvin") {
+      result = ((value - 32) * 5) / 9 + 273.15;
+    } else if (inputUnit === "Celsius" && outputUnit === "Fahrenheit") {
+      result = (value * 9) / 5 + 32;
+    } else if (inputUnit === "Celsius" && outputUnit === "Kelvin") {
+      result = value + 273.15;
+    } else if (inputUnit === "Kelvin" && outputUnit === "Fahrenheit") {
+      result = ((value - 273.15) * 9) / 5 + 32;
+    } else if (inputUnit === "Kelvin" && outputUnit === "Celsius") {
+      result = value - 273.15;
+    } else {
+      result = value;
+    }
+    setConvertedTempValue(result.toFixed(2));
+  };
 
-    const handleOutputUnit = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setOutputUnit(e.target.value);
-        console.log("Output unit changed to: ", e.target.value);
-    };
+  const handleInputUnit = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setInputUnit(e.target.value);
+    console.log("Input unit changed to: ", e.target.value);
+  };
 
-    const isButtonEnabled = tempValue !== "" && inputUnit !== "" && outputUnit !== "";
+  const handleOutputUnit = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setOutputUnit(e.target.value);
+    console.log("Output unit changed to: ", e.target.value);
+  };
 
-    const buttonClass = isButtonEnabled ? "bg-neutral-1000" : "bg-neutral-400 cursor-not-allowed";
+  const isButtonEnabled =
+    tempValue !== "" && inputUnit !== "" && outputUnit !== "";
 
-    return {
-        tempValue,
-        setTempValue,
-        inputUnit,
-        outputUnit,
-        convertedTempValue,
-        handleSubmit,
-        handleInputUnit,
-        handleOutputUnit,
-        isButtonEnabled,
-        buttonClass,
-    };
+  const buttonClass = isButtonEnabled
+    ? "bg-neutral-1000"
+    : "bg-neutral-400 cursor-not-allowed";
+
+  return {
+    tempValue,
+    setTempValue,
+    inputUnit,
+    outputUnit,
+    convertedTempValue,
+    handleSubmit,
+    handleInputUnit,
+    handleOutputUnit,
+    isButtonEnabled,
+    buttonClass,
+  };
 };
